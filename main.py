@@ -43,23 +43,22 @@ U = [[0.0 for x in range(m)] for y in range(n)]
 var = 1
 inf = 100000000.0
 dis = 0.99
-
 for i in range(e):
 	U[End[i][0]][End[i][1]]=ary[End[i][0]][End[i][1]]
 
 setE = set(End)
 setW = set(Wall)
-
+reward = -27
 error = 0.01
 
 while var == 1:
 	val = 0.0
 	U2 = [[0.0 for x in range(m)] for y in range(n)] 
-	for i in range(n):
-		for j in range(m):
-			print '%.3f' % float(U[i][j]) ,
-		print 
-	print "----------------------------------------"
+	# for i in range(n):
+	# 	for j in range(m):
+	# 		print '%.3f' % float(U[i][j]) ,
+	# 	print 
+	# print "----------------------------------------"
 	for i in range(n):
 		for j in range(m):
 			mx = -inf

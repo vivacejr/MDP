@@ -55,11 +55,11 @@ while var == 1:
 	val = 0.0
 	steps = steps +  1
 	U2 = [[0.0 for x in range(m)] for y in range(n)] 
-	for i in range(n):
-		for j in range(m):
-			print '%.3f' % float(U[i][j]) ,
-		print 
-	print "----------------------------------------"
+	# for i in range(n):
+	# 	for j in range(m):
+	# 		print '%.3f' % float(U[i][j]) ,
+	# 	print 
+	# print "----------------------------------------"
 	for i in range(n):
 		for j in range(m):
 			mx = -inf

@@ -9,6 +9,7 @@ m = int(nm[1])
 
 U = [[0.0 for x in range(m)] for y in range(n)] 
 ary = [[0.0 for x in range(m)] for y in range(n)]
+dir = [['A' for x in range(m)] for y in range(n)]
 
 for i in range(n):
 	a = raw_input().split()
@@ -64,9 +65,11 @@ while var == 1:
 		for j in range(m):
 			mx = -inf
 			if (i,j) in setE : 
+				dir[i][j] = '-'
 				U2[i][j] = U[i][j]
 				continue
 			if (i,j) in setW :
+				dir[i][j] = '-'
 				continue
 			u = float(U[i][j]) 
 			d = float(U[i][j])
@@ -100,11 +103,24 @@ while var == 1:
 			d = dis*d
 			w = dis*w
 			e = dis*e
+			if reward+0.8*u+0.1*(w+e) >= mx :
+				dir[i][j] = 'u'
 			mx = max(mx,reward+0.8*u+0.1*(w+e))
+			
+			if reward+0.8*d+0.1*(w+e) >= mx : 
+				dir[i][j] = 'd'
 			mx = max(mx,reward+0.8*d+0.1*(w+e))
+			
+			if reward+0.8*e+0.1*(u+d) >= mx :
+				dir[i][j] = 'e'
 			mx = max(mx,reward+0.8*e+0.1*(d+u))
+			
+			if reward+0.8*w+0.1*(u+d) >= mx :
+				dir[i][j] = 'w'
 			mx = max(mx,reward+0.8*w+0.1*(d+u))
+			
 			U2[i][j] = mx
+			
 			if U[i][j] != 0 :
 				val = max(val,float(abso(U[i][j]-U2[i][j])/abso(U[i][j])))
 			else :
@@ -118,5 +134,9 @@ for i in range(n):
 		print '%.3f' % float(U[i][j]) ,
 	print 
 
+for i in range(n):
+	for j in range(m):
+		print dir[i][j] ,
+	print 
 print "Steps taken - " 
 print steps

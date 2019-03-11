@@ -48,11 +48,12 @@ for i in range(e):
 
 setE = set(End)
 setW = set(Wall)
-reward = -27
+reward = -2.7
 error = 0.01
-
+steps = 0
 while var == 1:
 	val = 0.0
+	steps = steps +  1
 	U2 = [[0.0 for x in range(m)] for y in range(n)] 
 	# for i in range(n):
 	# 	for j in range(m):
@@ -110,3 +111,6 @@ for i in range(n):
 	for j in range(m):
 		print '%.3f' % float(U[i][j]) ,
 	print 
+
+print "Steps taken - " 
+print steps
